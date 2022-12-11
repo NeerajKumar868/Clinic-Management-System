@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block body %}
+
+{% load usertags %}
+
+
+
+<div class="container">
+    
+    <div class="container text-center">
+        <div class="row">
+          <div class="col">
+            <div class="card mb-4" style="width: 18rem; background-color: rgb(179, 176, 176); border: none; color: rgb(255, 255, 255); box-shadow: 2px 2px 2px 2px gray;">
+              <div class="card-body">
+                <h5 class="card-title">Total Patient</h5>
+                <h1>{{total}}</h1>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-4" style="width: 18rem; background-color: rgb(150, 148, 148); border: none; color: white; box-shadow: 2px 2px 2px 2px rgb(77, 77, 77); ">
+              <div class="card-body">
+                <h5 class="card-title">Total Deleted Patient</h5>
+              
+                <h1>NA</h1>
+              
+             
+              </div>
+
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-4" style="width: 18rem; background-color: rgb(114, 113, 113); border: none; color: rgb(255, 255, 255); box-shadow: 2px 2px 2px 2px rgb(39, 39, 39); ">
+              <div class="card-body">
+                <h5 class="card-title">Total Update</h5>
+                <h1>NA</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <h4>PATIENT DETAILS</h4>
+    <table class="table table-success table-striped" style="text-align: start;">
+        <thead>
+            <tr>
+              
+                <th>NAME</th>
+                <th>AGE</th>
+                <th>GANDER</th>
+                <th>LOCATION</th>
+                <th>VISIT DATE</th>
+                <th>REASON</th>
+                <th>ACTION</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for patient in patient_list %}
+            <tr>
+             
+                <td>{{patient.patient_name}}</td>
+                <td>{{patient.patient_age}}</td>
+                <td>{{patient.patient_gender}}</td>
+                <td>{{patient.patient_location}}</td>
+                <td>{{patient.patient_date_of_visit}}</td>
+                <td>{{patient.patient_reason_to_visit}}</td>
+                {% if request.user|admin %}
+                <td>
+                    <a class="btn btn-outline-success" href='edit/{{patient.patient_id}}'>UPDATE</a> &nbsp;
+                    <a class="btn btn-outline-danger" href="delete/{{patient.patient_id}}">DELETE</a>
+                </td>
+                {% else %}
+                <td>
+                
+                    <a class="btn btn-outline-danger" href="delete/{{patient.patient_id}}">DELETE</a>
+                </td>
+                {% endif %}
+               
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+
+{% endblock %}

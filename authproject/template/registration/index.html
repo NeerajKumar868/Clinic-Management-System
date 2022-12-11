@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load usertags %}
+
+<div class="container">
+{% if request.user|admin %}
+<div class="mt-3 mb-2" style="text-align:center" >
+    <h4>{{user.username}} ! You are Admin</h4>
+</div>
+{% endif %}
+
+<h1 class="text-center font mt-5 bg-dark text-light " >DocPulse</h1>
+<h2 style="color: rgb(21, 120, 212);" >Clinic Management Software</h2>
+<h6>Handling patient bills and appointment used to be a chaotic scene in hospitals and clinics. Not anymore! With the arrival of DocPulse’s Clinic Management Software, a systematic process has evolved over the time. The best part of this software is that it has reduced the use of paper, keeping all important information in one place to access. Doctors could coordinate with other departments with great ease, regarding medical health records. The software has helped in saving time as prescriptions, bills and other calculations are maintained digitally. This helps Doctors to concentrate on their core activities.</h6>
+</div>
+{% endblock %}

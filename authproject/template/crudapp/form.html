@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container">
+    <h1>FORM</h1>
+
+
+    <form action="save" method="post">
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="col-lg-5">
+                <input type="text" class="form-control mb-3" name="patient_name" placeholder="Full Name"
+                    aria-label="Full name">
+                <input type="text" class="form-control mb-3 " name="patient_age" placeholder="Age" aria-label="Age">
+                <input type="text" class="form-control mb-3 " name="patient_gender" placeholder="Gender"
+                    aria-label="Gender">
+                <input type="text" class="form-control mb-3 " name="patient_location" placeholder="Location"
+                    aria-label="Location">
+                <input type="date" class="form-control mb-3 " name="patient_date_of_visit" placeholder="Visit Date"
+                    aria-label="Visit Date">
+                <input type="text" class="form-control mb-3 " name="patient_reason_to_visit"
+                    placeholder="Reason To Visit" aria-label="Reason To Visit">
+                <input class="btn btn-primary col-lg-5" type="submit" value="{{action}}">
+            </div>
+        </div>
+
+    </form>
+</div>
+{% endblock %}
